@@ -25,6 +25,8 @@ namespace _01.Fiap.HelloWorld.UI
 
             var pf2 = new PessoaFisica("Juliana");
             var pj2 = new PessoaJuridica("Coca-Cola");
+
+            Console.ReadLine();
             
         }
     }
