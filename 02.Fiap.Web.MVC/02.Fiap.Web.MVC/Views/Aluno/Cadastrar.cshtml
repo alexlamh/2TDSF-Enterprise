@@ -1,0 +1,38 @@
+﻿@model _02.Fiap.Web.MVC.Models.Aluno
+
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+@if (Model != null)
+{
+    @ViewBag.churros
+    @TempData["msg"]
+    @Model.Nome
+    @Model.Rm
+    @Model.Turma
+}
+
+<form action="/Aluno/Cadastrar" method="post">
+    <div class="form-group">
+        <label for="id-rm">RM</label>
+        <input type="text" name="rm" id="id-rm" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="id-nome">Nome</label>
+        <input type="text" name="nome" id="id-nome" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="id-turma">Turma</label>
+        <select class="form-control" id="id-turma" name="turma">
+            <option>2TDSA</option>
+            <option>2TDSF</option>
+            <option>2TDSJ</option>
+        </select>
+    </div>
+    <input type="submit" value="OK" class="btn btn-outline-primary" />
+</form>
+
+
