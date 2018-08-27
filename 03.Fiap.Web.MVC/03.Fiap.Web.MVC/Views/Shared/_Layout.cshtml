@@ -21,8 +21,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Cadastrar Jogo","Cadastrar","Jogo")</li>
-                    <li>@Html.ActionLink("Listar Jogo","Listar","Jogo")</li>
+                    <li>@Html.ActionLink("Cadastrar Jogo", "Cadastrar", "Jogo")</li>
+                    <li>@Html.ActionLink("Listar Jogo", "Listar", "Jogo")</li>
                 </ul>
             </div>
         </div>
@@ -38,5 +38,9 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!--área para as páginas inserir conteúdo-->
+    @RenderSection("scripts", false)
+
 </body>
 </html>

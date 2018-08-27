@@ -6,12 +6,7 @@
 
 <h2>Cadastrar</h2>
 
-@if (TempData["msg"] != null)
-{
-<div class="alert alert-success">
-    @TempData["msg"]
-</div>
-}
+@Churros.Message(TempData["msg"])
 
 @using (Html.BeginForm())
 {
@@ -29,7 +24,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(j => j.Plataforma)
-        @Html.TextBoxFor(j => j.Plataforma, new { @class = "form-control" })
+        @Html.DropDownListFor(j => j.Plataforma, ViewBag.plataformas as SelectList ,new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(j => j.Descricao)
@@ -39,5 +34,9 @@
         @Html.LabelFor(j => j.IdadeMinima)
         @Html.TextBoxFor(c => c.IdadeMinima, new { @class = "form-control" })
     </div>
-    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+    @Churros.Submit("Cadastrar")
+}
+
+@section scripts{
+    <p>Conteúdo na section scripts...</p>
 }

@@ -22,6 +22,14 @@ namespace _03.Fiap.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Cadastrar()
         {
+            //Passar a lista de plataforma
+            var lista = new List<string>();
+            lista.Add("PC");
+            lista.Add("PS4");
+            lista.Add("Xbox One");
+
+            ViewBag.plataformas = new SelectList(lista);
+
             return View();
         }
 

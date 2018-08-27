@@ -17,14 +17,7 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.Nome</td>
-            <td>@item.Genero</td>
-            <td>@(item.Demo?"Sim":"Não")</td>
-            <td>@item.Plataforma</td>
-            <td>@item.Descricao</td>
-            <td>@item.IdadeMinima</td>
-        </tr>
+       @Html.Partial("_linhaTabela",item)
     }
 </table>
 
