@@ -14,6 +14,16 @@ namespace Fiap04.Web.MVC.Controllers
         private PetshopContext _context = new PetshopContext();
 
         [HttpGet]
+        public ActionResult Buscar(string nomeBusca)
+        {
+            //Pesquisar por nome no banco 
+            var lista = _context.Produtos
+                .Where(p => p.Nome.Contains(nomeBusca)).ToList();
+            //Joga a lista para a tela de Listar
+            return View("Listar",lista);
+        }
+
+        [HttpGet]
         public ActionResult Editar(int id)
         {
             var produto = _context.Produtos.Find(id);

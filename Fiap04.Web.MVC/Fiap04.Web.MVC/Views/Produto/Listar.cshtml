@@ -13,6 +13,15 @@
     </div>
 }
 
+<!-- Método, Classe, HTTP Method -->
+@using (Html.BeginForm("Buscar","Produto",FormMethod.Get, 
+        new { @class = "form-inline" }))
+{
+    <input type="text" name="nomeBusca"
+           class="form-control" placeholder="Digite o nome" />
+    <input type="submit" value="Pesquisar" class="btn btn-success" />
+}
+
 <table class="table">
     <tr>
         <th>Código</th>
@@ -33,7 +42,7 @@
                     Excluir
                 </button>
                 @Html.ActionLink("Atualizar","Editar",
-                    new { id = item.ProdutoId}, 
+                    new { id = item.ProdutoId},
                     new { @class = "btn btn-info btn-xs"})
             </td>
         </tr>
@@ -52,8 +61,8 @@
                 <p>Isso não tem volta...</p>
             </div>
             <div class="modal-footer">
-                @using (Html.BeginForm("excluir","produto"))
-                { 
+                @using (Html.BeginForm("excluir", "produto"))
+                {
                     <input type="hidden" name="id" id="codigoProduto" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                     <button type="submit" class="btn btn-danger">Confirmar</button>
