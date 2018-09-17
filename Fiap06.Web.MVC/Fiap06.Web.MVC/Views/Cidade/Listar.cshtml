@@ -1,0 +1,36 @@
+﻿@model List<Fiap06.Web.MVC.Models.Cidade>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Cidades</h2>
+
+@using (Html.BeginForm("Buscar","Cidade",
+        FormMethod.Get, new { @class = "form-inline" } ))
+{
+    @Html.DropDownList("estado", 
+        ViewBag.estados as SelectList, 
+        "Selecione", 
+        new { @class = "form-control" })
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+}
+<br />
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Data Fundação</th>
+        <th>Estado</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CidadeId</td>
+            <td>@item.Nome</td>
+            <td>@item.DataFundacao.ToShortDateString()</td>
+            <td>@item.Estado.Sigla</td>
+        </tr>
+    }
+</table>
+
