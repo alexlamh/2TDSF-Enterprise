@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Fiap06.Web.MVC.Persistencia;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +15,8 @@ namespace Fiap06.Web.MVC
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer(
+               new DropCreateDatabaseIfModelChanges<PaisContext>());
         }
     }
 }

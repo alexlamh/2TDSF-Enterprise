@@ -11,6 +11,10 @@ namespace Fiap06.Web.MVC.Models
         public string Nome { get; set; }
         public DateTime DataFundacao { get; set; }
 
+        public Regiao? Regiao { get; set; }
+
+        public bool CarroPorAplicativo { get; set; }
+
         public Estado Estado { get; set; }
         public int EstadoId { get; set; }
     }
