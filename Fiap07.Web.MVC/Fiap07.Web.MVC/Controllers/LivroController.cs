@@ -13,6 +13,14 @@ namespace Fiap07.Web.MVC.Controllers
         private UnitOfWork _unit = new UnitOfWork();
 
         [HttpGet]
+        public ActionResult Buscar(string titulo)
+        {
+            var livros = _unit
+                .LivroRepository.BuscarPor(l => l.Titulo.Contains(titulo));
+            return View("Listar",livros);
+        }
+
+        [HttpGet]
         public ActionResult Listar()
         {
             return View(_unit.LivroRepository.Listar());
