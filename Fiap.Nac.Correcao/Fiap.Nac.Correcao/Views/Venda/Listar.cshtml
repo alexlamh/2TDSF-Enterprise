@@ -1,0 +1,61 @@
+﻿@model List<Fiap.Nac.Correcao.Models.Venda>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Vendas</h2>
+
+@using (Html.BeginForm("Buscar", "Venda", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <input type="text" name="nome" placeholder="Digite o nome"
+           class="form-control" />
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+}
+<br />
+<table class="table">
+    <tr>
+        <th>Cliente</th>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Pago</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Cliente</td>
+            <td>@item.Data.ToShortDateString()</td>
+            <td>@item.Valor</td>
+            <td>@(item.Pago ? "Pago" : "Não Pago")</td>
+            <td>
+                <!-- Button trigger modal -->
+                <button  @(item.Pago?"disabled":"") onclick="codigo.value = @item.Codigo" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal">
+                    Pagar
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                Deseja marcar a venda como paga?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Pagar","Venda"))
+                {
+                    <input type="hidden" name="codigo" id="codigo" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

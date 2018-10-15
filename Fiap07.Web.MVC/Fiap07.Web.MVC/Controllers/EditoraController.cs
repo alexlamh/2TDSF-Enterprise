@@ -1,5 +1,6 @@
 ﻿using Fiap07.Web.MVC.Models;
 using Fiap07.Web.MVC.Units;
+using Fiap07.Web.MVC.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace Fiap07.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Cadastrar()
         {
-            return View();
+            var viewModel = new EditoraViewModel();
+            viewModel.Editoras = _unit.EditoraRepository.Listar();
+            return View(viewModel);
         }
 
         [HttpPost]

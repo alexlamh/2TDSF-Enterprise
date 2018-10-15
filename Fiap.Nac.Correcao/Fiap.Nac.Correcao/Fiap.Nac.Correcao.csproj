@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9E2AA9E0-3E77-45B5-9F5D-343ED4BBCE7D}</ProjectGuid>
+    <ProjectGuid>{5FE2E6F3-A0A3-4793-BB13-8D842CE72320}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fiap07.Web.MVC</RootNamespace>
-    <AssemblyName>Fiap07.Web.MVC</AssemblyName>
+    <RootNamespace>Fiap.Nac.Correcao</RootNamespace>
+    <AssemblyName>Fiap.Nac.Correcao</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -107,28 +107,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Livro\Cadastrar.cshtml" />
-    <Content Include="Views\Livro\Listar.cshtml" />
+    <Content Include="Views\Venda\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EditoraController.cs" />
-    <Compile Include="Controllers\LivroController.cs" />
+    <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Editora.cs" />
-    <Compile Include="Models\Livro.cs" />
-    <Compile Include="Persistencia\LivrariaContext.cs" />
+    <Compile Include="Models\Venda.cs" />
+    <Compile Include="Persistencia\VendaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EditoraRepository.cs" />
-    <Compile Include="Repositories\IEditoraRepository.cs" />
-    <Compile Include="Repositories\ILivroRepository.cs" />
-    <Compile Include="Repositories\LivroRepository.cs" />
+    <Compile Include="Repository\IVendaRepository.cs" />
+    <Compile Include="Repository\VendaRepository.cs" />
     <Compile Include="Units\UnitOfWork.cs" />
-    <Compile Include="ViewModel\Editora.cs" />
-    <Compile Include="ViewModel\ListaLivroViewModel.cs" />
-    <Compile Include="ViewModel\LivroViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -138,7 +130,7 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Editora\Cadastrar.cshtml" />
+    <Content Include="Views\Venda\Cadastrar.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -149,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\endat\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -163,9 +156,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>28757</DevelopmentServerPort>
+          <DevelopmentServerPort>2725</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:28757/</IISUrl>
+          <IISUrl>http://localhost:2725/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
