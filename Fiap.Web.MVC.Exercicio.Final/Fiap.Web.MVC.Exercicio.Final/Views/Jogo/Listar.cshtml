@@ -1,0 +1,106 @@
+﻿@model List<Fiap.Web.MVC.Exercicio.Final.Models.Jogo>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Jogos</h2>
+
+@Ajudante.Mensagem(TempData["msg"])
+
+<div class="row">
+    <div class="col-md-5">
+        @using (Html.BeginForm("BuscarPorNome", "Jogo", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <input type="text" name="nome" class="form-control" placeholder="Digite o nome" />
+            @Ajudante.Botao("Pesquisar por Nome")
+        }
+    </div>
+    <div class="col-md-4">
+        @using (Html.BeginForm("BuscarPorGenero", "Jogo", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            @Html.DropDownList("GeneroId", ViewBag.generos as SelectList, "Selecione", new { @class = "form-control" })
+            @Ajudante.Botao("Pesquisar por Genero")
+        }
+    </div>
+</div>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Nome</th>
+        <th>Data Lançamento</th>
+        <th>Plataforma</th>
+        <th>Disponível</th>
+        <th>Gênero</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.DataLancamento.ToShortDateString()</td>
+            <td>@item.Plataforma</td>
+            <td>@(item.Disponivel ? "Sim" : "Não")</td>
+            <td>@item.Genero.Nome</td>
+            <td>
+                @if (!item.Disponivel)
+                {
+                    @Html.ActionLink("Editar", "Editar", new { @id = item.JogoId }, new { @class = "btn btn-primary btn-sm" })
+                    <button onclick="codigoRemover.value = @item.JogoId" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalExcluir">
+                        Excluir
+                    </button>
+                    <button onclick="codigoDisponivel.value = @item.JogoId" type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalDisponibilizar">
+                        Disponibilizar
+                    </button>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Modal Disponibilizar-->
+<div class="modal fade" id="modalDisponibilizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                Deseja realmente disponibilizar o jogo?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Disponibilizar", "Jogo"))
+                {
+                    <input type="hidden" name="codigo" id="codigoDisponivel" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-success">Sim</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Excluir-->
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir o jogo?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Remover", "Jogo"))
+                {
+                    <input type="hidden" name="codigo" id="codigoRemover" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

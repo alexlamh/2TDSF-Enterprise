@@ -1,0 +1,31 @@
+﻿@model Fiap.Web.MVC.Exercicio.Final.Models.Jogo
+
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastro de Jogo</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(j => j.Nome)
+        @Html.TextBoxFor(j => j.Nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(j => j.DataLancamento)
+        @Html.TextBoxFor(j => j.DataLancamento, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(j => j.Plataforma)
+        @Html.EnumDropDownListFor(j => j.Plataforma, "Selecione", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(j => j.Plataforma)
+        @Html.DropDownListFor(j => j.GeneroId,
+            ViewBag.generos as SelectList,
+            "Selecione", new { @class = "form-control" })
+    </div>
+    @Ajudante.Botao("Cadastrar")
+}
+
